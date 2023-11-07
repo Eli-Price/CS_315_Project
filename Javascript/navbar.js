@@ -1,39 +1,108 @@
+/*
 // navbar.js
 function generateNavbar() {
-  // Create the navbar element
-  var nav = document.createElement('nav');
-  var ul = document.createElement('ul');
+  var navbar = document.getElementById('navbar');
   
-  // List of pages and their titles
-  var pages = [
-      { href: '../HTML/index.html', title: 'Home' },
-      { href: '../HTML/exhibitions.html', title: 'Exhibitions' },
-      { href: '../HTML/artists.html', title: 'Artists' },
-      { href: '../HTML/events.html', title: 'Events' },
-      { href: '../HTML/visitor-info.html', title: 'Visitor Info' },
-      { href: '../HTML/membership-form.html', title: 'Membership' },
-      { href: '../HTML/ticket-booking.html', title: 'Tickets' },
-      { href: '../HTML/art-submission.html', title: 'Art Submission' },
-      { href: '../HTML/about-us.html', title: 'About Us' },
-      { href: '../HTML/contact.html', title: 'Contact' }
+  // Create the toggle button for small screens
+  var toggleButton = document.createElement('button');
+  toggleButton.classList.add('nav-toggle');
+  toggleButton.textContent = '☰'; // Using ☰ as a simple menu icon
+  navbar.appendChild(toggleButton);
+
+  // Create the navigation list
+  var navList = document.createElement('ul');
+  navList.classList.add('nav-list');
+  // Define your page links and titles
+  var links = [
+    { href: '../HTML/index.html', text: 'Home' },
+    { href: '../HTML/exhibitions.html', text: 'Exhibitions' },
+    { href: '../HTML/artists.html', text: 'Artists' },
+    { href: '../HTML/events.html', text: 'Events' },
+    { href: '../HTML/visitor-info.html', text: 'Visitor Info' },
+    { href: '../HTML/membership-form.html', text: 'Membership' },
+    { href: '../HTML/ticket-booking.html', text: 'Tickets' },
+    { href: '../HTML/art-submission.html', text: 'Art Submission' },
+    { href: '../HTML/about-us.html', text: 'About Us' },
+    { href: '../HTML/contact.html', text: 'Contact' }
   ];
 
-  // Create a list item for each page
-  pages.forEach(function(page) {
+  // Generate the list items and links
+  links.forEach(function(link) {
       var li = document.createElement('li');
       var a = document.createElement('a');
-      a.href = page.href;
-      a.textContent = page.title;
+      a.href = link.href;
+      a.textContent = link.text;
       li.appendChild(a);
-      ul.appendChild(li);
+      navList.appendChild(li);
   });
 
-  // Append the list to the nav element
-  nav.appendChild(ul);
+  // Add the list to the navbar
+  navbar.appendChild(navList);
 
-  // Append the nav to the div with id 'navbar'
-  document.getElementById('navbar').appendChild(nav);
+  // Event listener for the toggle button
+  toggleButton.addEventListener('click', function() {
+      navList.classList.toggle('active');
+  });
 }
 
-// Call the function to generate the navbar when the window loads.
-window.onload = generateNavbar;
+// Call the generateNavbar function when the DOM is fully loaded
+if (document.readyState !== 'loading') {
+  generateNavbar();
+} else {
+  document.addEventListener('DOMContentLoaded', generateNavbar);
+}
+*/
+
+// navbar.js
+function generateNavbar() {
+  var navbar = document.getElementById('navbar');
+  
+  // Create the navigation list
+  var navList = document.createElement('ul');
+  navList.classList.add('nav-list');
+
+  // Define your page links and titles
+  var links = [
+    { href: '../HTML/index.html', text: 'Home' },
+    { href: '../HTML/exhibitions.html', text: 'Exhibitions' },
+    { href: '../HTML/artists.html', text: 'Artists' },
+    { href: '../HTML/events.html', text: 'Events' },
+    { href: '../HTML/visitor-info.html', text: 'Visitor Info' },
+    { href: '../HTML/membership-form.html', text: 'Membership' },
+    { href: '../HTML/ticket-booking.html', text: 'Tickets' },
+    { href: '../HTML/art-submission.html', text: 'Art Submission' },
+    { href: '../HTML/about-us.html', text: 'About Us' },
+    { href: '../HTML/contact.html', text: 'Contact' }
+  ];
+      // ... add the rest of your menu items here
+
+  // Generate the list items and links
+  links.forEach(function(link) {
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = link.href;
+      a.textContent = link.text;
+      li.appendChild(a);
+      navList.appendChild(li);
+  });
+
+  // Add the list to the navbar
+  navbar.appendChild(navList);
+
+  // Create the toggle button for small screens and append to navbar
+  var toggleButton = document.createElement('button');
+  toggleButton.classList.add('nav-toggle', 'hidden'); // Add 'hidden' class by default
+  toggleButton.textContent = '☰'; // Using ☰ as a simple menu icon
+  toggleButton.addEventListener('click', function() {
+      navList.classList.toggle('active');
+  });
+
+  navbar.insertBefore(toggleButton, navbar.firstChild); // Insert the button before the nav list
+}
+
+// Call the generateNavbar function when the DOM is fully loaded
+if (document.readyState !== 'loading') {
+  generateNavbar();
+} else {
+  document.addEventListener('DOMContentLoaded', generateNavbar);
+}

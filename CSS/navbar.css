@@ -1,15 +1,19 @@
+
 /* navbar.css */
 nav {
   background-color: #d2b48c; /* Tan background */
   text-align: center;
   padding: 1em 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow for depth */
+  overflow: hidden;
 }
 
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
@@ -25,19 +29,57 @@ nav ul li a {
   transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-nav ul li a:hover {
-  color: #66a366; /* Lighter green color on hover */
+nav ul li a:hover,
+nav ul li a:focus { /* Added focus for accessibility */
+  color: #ffffff; /* White text on hover/focus */
+  background-color: #66a366; /* Lighter green background on hover/focus */
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Responsive tweaks can be added for mobile view */
+.nav-toggle {
+  display: none;
+}
+
+/* Responsive tweaks for mobile view */
+/* Small screen styles */
 @media (max-width: 768px) {
-  nav ul li {
-      display: block; /* Stack the links under each other */
-      margin-right: 0;
-      margin-bottom: 10px;
+  .nav-toggle {
+      display: block;
+      padding: 1em; 
+      background-color: #d2b48c;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      width: 80%;
+      margin: auto;
+      /*border-radius: 5px;*/
+      font-size: 1em;
   }
 
-  nav ul li a {
+  .nav-list {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+  }
+
+  .nav-list.active {
+      display: flex;
+  }
+
+  .nav-list li {
       display: block;
+      width: 100%;
+  }
+
+  .nav-list li a {
+      padding: 1em;
+      display: block;
+      border-bottom: 1px solid #eaeaea;
+      background-color: #f4f4f4;
+  }
+
+  .nav-list li:last-child a {
+      border-bottom: none;
   }
 }
