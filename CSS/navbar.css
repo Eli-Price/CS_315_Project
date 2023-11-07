@@ -1,0 +1,43 @@
+/* navbar.css */
+nav {
+  background-color: #d2b48c; /* Tan background */
+  text-align: center;
+  padding: 1em 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow for depth */
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline; /* Display list items inline */
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none; /* Removes underline from links */
+  color: #004d00; /* Dark green color for the text */
+  font-weight: bold;
+  padding: 0.5em 1em;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+nav ul li a:hover {
+  color: #66a366; /* Lighter green color on hover */
+}
+
+/* Responsive tweaks can be added for mobile view */
+@media (max-width: 768px) {
+  nav ul li {
+      display: block; /* Stack the links under each other */
+      margin-right: 0;
+      margin-bottom: 10px;
+  }
+
+  nav ul li a {
+      display: block;
+  }
+}
