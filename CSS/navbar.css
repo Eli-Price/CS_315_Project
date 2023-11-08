@@ -42,7 +42,11 @@ nav ul li a:focus { /* Added focus for accessibility */
 
 /* Responsive tweaks for mobile view */
 /* Small screen styles */
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
+  nav {
+    padding: 0;
+  }
+
   .nav-toggle {
       display: block;
       padding: 1em; 

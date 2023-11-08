@@ -1,0 +1,86 @@
+html, body {
+  height: 100%; /* Ensure the html and body elements take up the full height of the viewport */
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  display: flex; /* Use flexbox to create a column container */
+  flex-direction: column; /* Stack children elements vertically */
+  min-height: 100vh; /* Use viewport height to ensure minimum height */
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+.content {
+  flex: 1; //* Allow the content to grow and fill the available space */
+}
+
+.content main {
+  padding: 20px;
+}
+
+header {
+  background-color: #b89569; /* Tan background */
+  color: #004d00; /* Dark green text */
+  padding: 15px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+/* Calendar Section */
+#calendar-section h2 {
+  color: #004d00; /* Dark Green */
+  padding-bottom: 0.5em;
+  margin: 0;
+}
+
+/* Table Styles */
+#calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#calendar th, 
+#calendar td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd; /* Light grey border */
+}
+
+#calendar th {
+  background-color: #f7f7f7; /* Light grey background */
+  color: #004d00; /* Dark green text */
+}
+
+#calendar tr:nth-child(even) {
+  background-color: #f2f2f2; /* Zebra striping for rows */
+}
+
+#calendar tr:hover {
+  background-color: #ddd; /* Hover effect for rows */
+  transition: /*color*/ 0.3s ease, background-color 0.3s ease;
+}
+
+footer {
+  background-color: #004d00; /* Dark green background */
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  /* Responsive table adjustments */
+  #calendar table {
+      display: block;
+      overflow-x: auto; /* Allows table to scroll horizontally on small screens */
+  }
+}

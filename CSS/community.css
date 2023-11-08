@@ -91,11 +91,11 @@ figcaption {
 }
 
 /* Gallery grid layout */
-#art-gallery {
+/*#art-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 1em;
-}
+} */
 
 /* Responsive tweaks for mobile view */
 /* Small screen styles */
