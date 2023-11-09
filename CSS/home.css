@@ -35,8 +35,49 @@ header h1 {
   margin: 0;
 }
 
+/* Main Content Styles */
+main {
+  padding: 1rem;
+}
+
+/* Section Styling */
 section {
-  margin: 20px 0;
+  margin-bottom: 2rem;
+}
+
+section h2 {
+  color: #004d00; /* Dark green text */
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Welcome Section */
+.welcome-section {
+  background: #f7f7f7; /* Light grey background */
+  padding: 2rem;
+}
+
+/* About Section */
+.about-section {
+  background: #eaeaea; /* Slightly darker grey background */
+  padding: 2rem;
+}
+
+/* Exhibitions Section */
+.exhibitions-section {
+  background: #d2b48c; /* Tan background */
+  padding: 2rem;
+}
+
+/* Membership Section */
+.membership-section {
+  background: #f7f7f7; /* Light grey background */
+  padding: 2rem;
 }
 
 footer {
@@ -47,4 +88,15 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+      font-size: 2rem;
+  }
+
+  section h2 {
+      font-size: 1.5rem;
+  }
 }
