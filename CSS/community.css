@@ -96,7 +96,6 @@ figcaption {
 /* Small screen styles */
 @media (max-width: 768px) {
   .art-gallery  {
-    /* Responsive settings for the rectangles */
     width: 100%; /* Full width to adjust to container size */
     height: auto;
     margin-bottom: 10px;
@@ -104,11 +103,4 @@ figcaption {
     padding: 0px;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
-
-  /* Gallery grid layout */
-/*#art-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 1em;
-} */
 }

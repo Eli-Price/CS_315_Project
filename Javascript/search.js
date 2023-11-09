@@ -1,19 +1,20 @@
-// search.js
+// search.js  
+// Is used to find pictures in a gallery that match the criteria given by the user input
 
 document.addEventListener('DOMContentLoaded', function() {
   var searchForm = document.getElementById('search-form');
   var outputDiv = document.getElementById('search-output');
   var gallery = document.getElementById('art-gallery');
 
-  // Function to validate input against the criteria of two words
+  // Function to validate input
   function isValidInput(input) {
       return /^[A-Za-z]+(?:\s[A-Za-z]+)?$/.test(input);
   }
 
-  // Function to create a figure with an image and caption
+  // Function to create a figure element
   function createFigure(src, srcLowRes, captionText) {
     var figure = document.createElement('figure');
-    figure.className = 'art-piece'; // Use this class to apply CSS
+    figure.className = 'art-piece'; // Use this class to apply CSS to image and caption
 
     var picture = document.createElement('picture');
 
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var img = document.createElement('img');
     img.src = src; // Fallback src if picture element is not supported
     img.alt = captionText;
-    img.className = 'responsive-image'; // Use this class to apply CSS
+    img.className = 'responsive-image'; // Use this class to apply CSS to image
 
     // Append sources and img to the picture element
     picture.appendChild(sourceLowRes);
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var caption = document.createElement('figcaption');
     caption.textContent = captionText;
 
+    // Append picture element and caption to the figure
     figure.appendChild(picture);
     figure.appendChild(caption);
 
@@ -56,11 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
         { src: '../images/highres/mcgill-library-y4PqRPqSako-unsplash.jpg', srcLowRes: '../images/lowres/mcgill-library-y4PqRPqSako-unsplash.jpg', caption: 'Photo by McGill Library on Unsplash' },
         { src: '../images/highres/steve-johnson-e5LdlAMpkEw-unsplash.jpg', srcLowRes: '../images/lowres/steve-johnson-e5LdlAMpkEw-unsplash.jpg', caption: 'Photo by Steve Johnson on Unsplash' },
     ];
-
-    // Determine screen size and choose the appropriate image set
-    //var imageSet = window.innerWidth <= 768 ? '../images/lowres' : '../images/highres';
-    //var imageSet = window.innerWidth;
-    //console.log(imageSet);
 
     // Create and append figure elements to the gallery
     imageData.forEach(function(image) {
@@ -88,6 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       var json = JSON.stringify(searchData);
+      // Show what would be sent as JSON data
       outputDiv.textContent = 'JSON to send: ' + json;
 
       // Fill the gallery with images based on the search
@@ -96,6 +94,4 @@ document.addEventListener('DOMContentLoaded', function() {
       searchForm.reset();
   });
 
-  // Listen for window resize to update images for responsive layout
-  //window.addEventListener('resize', fillGallery);
 });

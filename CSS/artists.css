@@ -52,7 +52,7 @@ section h2 {
   background-color: #f7f7f7; /* Light grey background */
   padding: 1em;
   margin-bottom: 1em;
-  border-radius: 4px; /* Optional: rounded corners */
+  border-radius: 4px; /* Rounded corners */
   max-width: 800px; /* Maximum width of the artist item */
   margin-left: auto; /* Center the artist item */
   margin-right: auto; /* Center the artist item */
@@ -76,7 +76,7 @@ section h2 {
   padding: 10px 15px;
   text-decoration: none;
   display: inline-block;
-  border-radius: 4px; /* Optional: rounded corners */
+  border-radius: 4px; /* Rounded corners */
   transition: background-color 0.3s; /* Smooth background color transition */
 }
 
