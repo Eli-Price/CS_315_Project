@@ -1,0 +1,108 @@
+/* login.css */
+html, body {
+  height: 100%; /* Ensure the html and body elements take up the full height of the viewport */
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex; /* Use flexbox to create a column container */
+  flex-direction: column; /* Stack children elements vertically */
+  min-height: 100vh; /* Use viewport height to ensure minimum height */
+}
+
+.content {
+  flex: 1; /* Allow the content to grow and fill the available space */
+}
+
+.content {
+  font-family: 'Arial', sans-serif;
+  background: #fff;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: #f7f7f7; /* Light grey background */
+  padding: 2em;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  color: #004d00; /* Dark green text */
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form-group {
+  margin-bottom: 1em;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn {
+  background-color: #004d00; /* Dark green background */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #66a366; /* Lighter green */
+}
+
+footer {
+  background-color: #004d00; /* Dark green background */
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-container {
+      width: 90%;
+      padding: 1em;
+  }
+
+  h1 {
+      font-size: 1.5rem;
+  }
+
+  .content {
+    margin-top: 8%;
+    justify-content: center;
+    align-items: start;
+  }
+  
+}

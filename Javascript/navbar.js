@@ -17,7 +17,8 @@ function generateNavbar() {
     { href: '../HTML/community-art.html', text: 'Community' },
     { href: '../HTML/art-submission.html', text: 'Art Submission' },
     { href: '../HTML/about-us.html', text: 'About Us' },
-    { href: '../HTML/contact.html', text: 'Contact' }
+    { href: '../HTML/contact.html', text: 'Contact' },
+    { href: '../HTML/login.html', text: 'Login' }
   ];
 
   // Generate the list items and links
