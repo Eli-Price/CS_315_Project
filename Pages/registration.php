@@ -29,7 +29,7 @@
                   <input type="email" id="email" name="email" required>
               </div>
               <button type="submit" class="btn">Submit</button>
-              <button class="btn" onclick="document.location='../HTML/login.html'">Login</button>
+              <button class="btn" onclick="document.location='../Pages/login.php'">Login</button>
           </form>
       </div>
     </div>

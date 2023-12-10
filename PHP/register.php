@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['pa
         // Insert new user into database
         $stmt = $pdo->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
         $stmt->execute([$username, $password, $email]);
-        echo "Registration successful. <a href='login.html'>Login here</a>";
+        echo "Registration successful. <a href='../Pages/login.php'>Login here</a>";
     }
 }
 ?>

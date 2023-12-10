@@ -26,7 +26,8 @@
             </div>
             <button type="submit" class="btn">Confirm</button>
         </form>
-        <button class="btn" onclick="document.location='../HTML/registration.html'">Register</button>
+        <button class="btn" onclick="document.location='../Pages/registration.php'">Register</button>
+        <button class="btn" onclick="document.location='../PHP/logout.php'">Logout</button>
       </div>
       
     </div>

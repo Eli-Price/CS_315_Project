@@ -4,7 +4,7 @@ require '../Database/dblogin.php';
 
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login if the user is not logged in
-    header("Location: login.html");
+    header("Location: login.php");
     exit;
 }
 
@@ -30,11 +30,11 @@ if (isset($_GET['ticket_id'])) {
     }
 
     // Redirect back to events page or to the cart page
-    header("Location: ../HTML/events.php");
+    header("Location: ../Pages/events.php");
     exit;
 }
 
 // Redirect to the events page if the ticket_id is not set
-header("Location: ../HTML/events.php");
+header("Location: ../Pages/events.php");
 exit;
 ?>

@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['pa
       $_SESSION['username'] = $user['username'];
       $_SESSION['user_id'] = $user['id'];
       // Redirect to a protected page or home page
-      header("Location: ../HTML/index.html");
+      header("Location: ../Pages/index.html");
       exit;
     } else {
       // Authentication failed
-      header("Location: ../HTML/login.html");
+      header("Location: ../Pages/login.php");
       echo "Invalid username or password.";
     }
 }
