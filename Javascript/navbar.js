@@ -6,14 +6,13 @@ function generateNavbar() {
   var navList = document.createElement('ul');
   navList.classList.add('nav-list');
 
-  // Define your page links and titles
+  // Define page links and titles
   var links = [
     { href: '../HTML/index.html', text: 'Home' },
     { href: '../HTML/exhibitions.html', text: 'Exhibitions' },
     { href: '../HTML/artists.html', text: 'Artists' },
-    { href: '../HTML/events.html', text: 'Events' },
+    { href: '../HTML/events.php', text: 'Events' },
     { href: '../HTML/visitor-info.html', text: 'Visitor Info' },
-    { href: '../HTML/membership-form.html', text: 'Membership' },
     { href: '../HTML/community-art.html', text: 'Community' },
     { href: '../HTML/art-submission.html', text: 'Art Submission' },
     { href: '../HTML/about-us.html', text: 'About Us' },

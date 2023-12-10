@@ -1,3 +1,8 @@
+<?php
+session_start();
+require '../Database/dblogin.php'; //Database connection
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +11,7 @@
     <title>Local Art Gallery - Event Calender</title>
     <!-- Other head elements -->
 
-    <!-- link to the styles -->
+    <!-- Link to the CSS files -->
     <link rel="stylesheet" href="../CSS/navbar.css">
     <link rel="stylesheet" href="../CSS/events.css">  
 </head>
@@ -18,40 +23,38 @@
 
     <div class="content">
         <header class="container">
-            <h1>Event Calender</h1>
+            <h1>Event Calendar</h1>
         </header>
 
         <main>
             <section id="calendar-section">
                 <h2>Upcoming Events</h2>
                 <div id="calendar">
-                    <!-- Calendar will be here -->
                     <table>
                         <thead>
                             <tr>
                                 <th>Date</th>
                                 <th>Event</th>
-                                <th>Location</th>
+                                <th>Price</th>
+                                <?php if (isset($_SESSION['user_id'])) echo "<th>Action</th>"; ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Events -->
-                            <tr>
-                                <td>January 1, 2023</td>
-                                <td>New Year's Art Gala</td>
-                                <td>Main Exhibit Hall</td>
-                            </tr>
-                            <!-- More events -->
-                            <tr>
-                                <td>January 13, 2023</td>
-                                <td>Community Art Exhibition</td>
-                                <td>Main Exhibit Hall</td>
-                            </tr>
-                            <tr>
-                                <td>January 16, 2023</td>
-                                <td>Kid's Fest</td>
-                                <td>Front Courtyard</td>
-                            </tr>
+                            <?php
+                            
+
+                            $stmt = $pdo->query("SELECT * FROM tickets ORDER BY event_date ASC");
+                            while ($row = $stmt->fetch()) {
+                                echo "<tr>";
+                                echo "<td>" . htmlspecialchars($row['event_date']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['event_name']) . "</td>";
+                                echo "<td>$" . htmlspecialchars($row['price']) . "</td>";
+                                if (isset($_SESSION['user_id'])) {
+                                    echo "<td><a href='../PHP/add_to_cart.php?ticket_id=" . $row['ticket_id'] . "' class='button'>Add to Cart</a></td>";
+                                }
+                                echo "</tr>";
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
