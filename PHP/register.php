@@ -13,7 +13,7 @@ $form_data = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
+    $password = trim(password_hash($_POST['password'], PASSWORD_DEFAULT));
     $email = trim($_POST['email']);
 
     $form_data = ['username' => $username, 'password' => $password, 'email' => $email];
@@ -42,12 +42,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
         $stmt->execute([$username]);
         if ($stmt->rowCount() > 0) {
-            echo "Username already exists. Please choose a different username.";
+            $errors['username'] = "Username already exists";
+            $_SESSION['errors'] = $errors;
+            header("Location: ../Pages/registration.php");
         } else {
             // Insert new user into database
             $stmt = $pdo->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
             $stmt->execute([$username, $password, $email]);
-            echo "Registration successful. <a href='../Pages/login.php'>Login here</a>";
+            // Set session variable to show that a successful registration has occurred
+            $_SESSION['register_success'] = "Registration successful. Please log in.";
+            header("Location: ../Pages/login.php");
         }
     }
 }

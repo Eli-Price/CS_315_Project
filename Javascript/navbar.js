@@ -1,6 +1,7 @@
 // navbar.js
 function generateNavbar() {
   var navbar = document.getElementById('navbar');
+  var userLoggedIn = document.getElementById('userLoggedIn');
   
   // Create the navigation list
   var navList = document.createElement('ul');
@@ -16,7 +17,6 @@ function generateNavbar() {
     { href: '../Pages/community-art.php', text: 'Community' },
     { href: '../Pages/art-submission.php', text: 'Art Submission' },
     { href: '../Pages/about-us.php', text: 'About Us' },
-    { href: '../Pages/login.php', text: 'Login' }
   ];
 
   // Generate the list items and links
@@ -28,6 +28,33 @@ function generateNavbar() {
       li.appendChild(a);
       navList.appendChild(li);
   });
+
+  // Chek if the user is logged in
+  if (userLoggedIn) {
+    //User is logged in, add the logout and Shopping Cart links
+    var cartItem = document.createElement('li');
+    var cartLink = document.createElement('a');
+    cartLink.href = '../Pages/cart.php';
+    cartLink.textContent = 'Cart';
+    cartItem.appendChild(cartLink);
+    navList.appendChild(cartItem);
+
+    var logoutItem = document.createElement('li');
+    var logoutLink = document.createElement('a');
+    logoutLink.href = '../Pages/login.php';
+    logoutLink.textContent = 'Logout';
+    logoutItem.appendChild(logoutLink);
+    navList.appendChild(logoutItem);
+
+  } else {
+    // User is not logged in, add the login link
+    var loginItem = document.createElement('li');
+    var loginLink = document.createElement('a');
+    loginLink.href = '../Pages/login.php';
+    loginLink.textContent = 'Login';
+    loginItem.appendChild(loginLink);
+    navList.appendChild(loginItem);
+  }
 
   // Add the list to the navbar
   navbar.appendChild(navList);

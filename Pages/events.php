@@ -17,6 +17,11 @@ require '../Database/dblogin.php'; //Database connection
 </head>
 
 <body>
+    <!-- Conditionally add an unshown element if the user is logged in -->
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <span id="userLoggedIn" style="display: none;"></span>
+    <?php endif; ?>
+
     <nav id="navbar">
         <!-- The navigation bar will be injected here by JavaScript -->
     </nav>

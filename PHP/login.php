@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $user['username'];
         $_SESSION['user_id'] = $user['id'];
         // Redirect to a protected page or home page
-        header("Location: ../Pages/index.html");
+        header("Location: ../Pages/index.php");
         exit;
       } else {
         // Authentication failed
