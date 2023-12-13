@@ -1,22 +1,54 @@
 <?php
-// Include database connection
+session_start();
 require '../Database/dblogin.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'], $_POST['password'], $_POST['email'])) {
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hashing the password
-    $email = $_POST['email'];
+// If user is already logged in go back to login page
+if (isset($_SESSION['user_id'])) {
+  header("Location: ../Pages/login.php");
+  exit;
+}
 
-    // Check if username already exists
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->execute([$username]);
-    if ($stmt->rowCount() > 0) {
-        echo "Username already exists. Please choose a different username.";
+$errors = [];
+$form_data = [];
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $email = trim($_POST['email']);
+
+    $form_data = ['username' => $username, 'password' => $password, 'email' => $email];
+
+    // Validation
+    if (!preg_match("/^[a-zA-Z0-9_]{5,}$/", $username)) {
+        $errors['username'] = "Invalid username";
+    }
+
+    if (!preg_match("/^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/", $password)) {
+        $errors['password'] = "Invalid password";
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Invalid email";
+    }
+
+    if (!empty($errors)) {
+        $_SESSION['errors'] = $errors;
+        $_SESSION['form_data'] = $form_data;
+        header("Location: ../Pages/registration.php");
+        exit;
     } else {
-        // Insert new user into database
-        $stmt = $pdo->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
-        $stmt->execute([$username, $password, $email]);
-        echo "Registration successful. <a href='../Pages/login.php'>Login here</a>";
+        // Handle the registration when there are no errors
+        // Check if username already exists
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $stmt->execute([$username]);
+        if ($stmt->rowCount() > 0) {
+            echo "Username already exists. Please choose a different username.";
+        } else {
+            // Insert new user into database
+            $stmt = $pdo->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
+            $stmt->execute([$username, $password, $email]);
+            echo "Registration successful. <a href='../Pages/login.php'>Login here</a>";
+        }
     }
 }
 ?>

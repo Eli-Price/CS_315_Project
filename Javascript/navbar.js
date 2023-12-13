@@ -8,15 +8,14 @@ function generateNavbar() {
 
   // Define page links and titles
   var links = [
-    { href: '../Pages/index.html', text: 'Home' },
-    { href: '../Pages/exhibitions.html', text: 'Exhibitions' },
-    { href: '../Pages/artists.html', text: 'Artists' },
+    { href: '../Pages/index.php', text: 'Home' },
+    { href: '../Pages/exhibitions.php', text: 'Exhibitions' },
+    { href: '../Pages/artists.php', text: 'Artists' },
     { href: '../Pages/events.php', text: 'Events' },
-    { href: '../Pages/visitor-info.html', text: 'Visitor Info' },
-    { href: '../Pages/community-art.html', text: 'Community' },
-    { href: '../Pages/art-submission.html', text: 'Art Submission' },
-    { href: '../Pages/about-us.html', text: 'About Us' },
-    { href: '../Pages/contact.html', text: 'Contact' },
+    { href: '../Pages/visitor-info.php', text: 'Visitor Info' },
+    { href: '../Pages/community-art.php', text: 'Community' },
+    { href: '../Pages/art-submission.php', text: 'Art Submission' },
+    { href: '../Pages/about-us.php', text: 'About Us' },
     { href: '../Pages/login.php', text: 'Login' }
   ];
 

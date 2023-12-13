@@ -40,6 +40,10 @@ nav ul li a:focus { /* Added focus for accessibility */
   display: none;
 }
 
+/*.nav-list li:last-child a {
+  display: none;
+}*/
+
 /* Responsive tweaks for mobile view */
 /* Small screen styles */
 @media (max-width: 1300px) {
