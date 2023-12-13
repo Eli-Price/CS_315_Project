@@ -1,6 +1,37 @@
 <?php
 session_start();
 require '../Database/dblogin.php'; //Database connection
+
+$events = [];
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Fetch events along with quantities in cart and purchased tickets
+    $stmt = $pdo->prepare("
+    SELECT t.ticket_id, t.event_name, t.event_date, t.price, t.available_quantity, 
+        COALESCE(utc.quantity, 0) AS cart_quantity, 
+        COALESCE(utp.quantity, 0) AS purchased_quantity,
+        utc.user_ticket_id AS cart_user_ticket_id,
+        utp.user_ticket_id AS purchased_user_ticket_id
+    FROM tickets t
+    LEFT JOIN user_tickets utc ON t.ticket_id = utc.ticket_id AND utc.user_id = ? AND utc.status = 'in_cart'
+    LEFT JOIN user_tickets utp ON t.ticket_id = utp.ticket_id AND utp.user_id = ? AND utp.status = 'purchased'
+    ORDER BY t.event_date ASC
+    ");
+
+    $stmt->execute([$user_id, $user_id]);
+    $events = $stmt->fetchAll();
+} else {
+    // Fetch events
+    $stmt = $pdo->prepare("
+    SELECT t.event_name, t.event_date, t.price, t.available_quantity 
+    FROM tickets t
+    ORDER BY t.event_date ASC
+    ");
+    $stmt->execute();
+    $events = $stmt->fetchAll();
+}
 ?>
 
 <!DOCTYPE html>
@@ -38,28 +69,49 @@ require '../Database/dblogin.php'; //Database connection
                     <table>
                         <thead>
                             <tr>
-                                <th>Date</th>
                                 <th>Event</th>
+                                <th>Date</th>
                                 <th>Price</th>
-                                <?php if (isset($_SESSION['user_id'])) echo "<th>Action</th>"; ?>
+                                <th>Available</th>
+                                <?php if (isset($_SESSION['user_id'])) : ?>
+                                    <?php echo "<th>In Cart</th>"; ?>
+                                    <?php echo "<th>Purchased</th>"; ?>
+                                    <?php echo "<th>Action</th>"; ?>
+                                <?php endif; ?>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php
-                            
+                            <?php if (isset($_SESSION['user_id'])): ?>
+                                <?php foreach ($events as $event): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($event['event_name']); ?></td>
+                                        <td><?php echo htmlspecialchars($event['event_date']); ?></td>
+                                        <td>$<?php echo htmlspecialchars($event['price']); ?></td>
+                                        <td><?php echo htmlspecialchars($event['available_quantity']); ?></td>
+                                        <td><?php echo htmlspecialchars($event['cart_quantity']); ?></td>
+                                        <td><?php echo htmlspecialchars($event['purchased_quantity']); ?></td>
+                                        <td>
+                                            <?php if ($event['available_quantity'] > 0): ?>
+                                                <a href="../PHP/add_to_cart.php?action=subtract&ticket_id=<?php echo $event['ticket_id']; ?>&source=events" class="button">Add to Cart</a>
+                                            <?php endif; ?>
 
-                            $stmt = $pdo->query("SELECT * FROM tickets ORDER BY event_date ASC");
-                            while ($row = $stmt->fetch()) {
-                                echo "<tr>";
-                                echo "<td>" . htmlspecialchars($row['event_date']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['event_name']) . "</td>";
-                                echo "<td>$" . htmlspecialchars($row['price']) . "</td>";
-                                if (isset($_SESSION['user_id'])) {
-                                    echo "<td><a href='../PHP/add_to_cart.php?ticket_id=" . $row['ticket_id'] . "' class='button'>Add to Cart</a></td>";
-                                }
-                                echo "</tr>";
-                            }
-                            ?>
+                                            <?php if ($event['cart_quantity'] > 0): ?>
+                                                <a href="../PHP/update_cart.php?action=subtract&id=<?php echo $event['cart_user_ticket_id']; ?>&source=events">-</a>
+                                                <a href="../PHP/update_cart.php?action=add&id=<?php echo $event['cart_user_ticket_id']; ?>&source=events">+</a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <?php foreach ($events as $event): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($event['event_name']); ?></td>
+                                        <td><?php echo htmlspecialchars($event['event_date']); ?></td>
+                                        <td>$<?php echo htmlspecialchars($event['price']); ?></td>
+                                        <td><?php echo htmlspecialchars($event['available_quantity']); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>
@@ -70,10 +122,8 @@ require '../Database/dblogin.php'; //Database connection
     <footer>
         <p>&copy; 2023 Local Art Gallery</p>
     </footer>
-
-<!-- The rest of your page content -->
-
-<!-- Include the navbar JavaScript file -->
-<script src="../Javascript/navbar.js"></script>
+    
+    <!-- Include the navbar JavaScript file -->
+    <script src="../Javascript/navbar.js"></script>
 </body>
 </html>

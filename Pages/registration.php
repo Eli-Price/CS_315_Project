@@ -50,8 +50,9 @@ $errors = $_SESSION['errors'] ?? [];
                     <?php endif; ?>
                 </div>
                 <button type="submit" class="btn">Submit</button>
-                <script src="../Javascript/inputValidation.js"></script>
+                
             </form>
+            <script src="../Javascript/inputValidation.js"></script>
             <button class="btn" onclick="document.location='../Pages/login.php'">Login</button>
             <!-- <script src="../Javascript/inputValidation.js"></script> -->
             <?php

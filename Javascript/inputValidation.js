@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const usernameRegex = /^[a-zA-Z0-9_]{5,}$/; // Usernames should be alphanumeric and at least 5 characters
       const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/; // Passwords should contain letters and numbers and be at least 6 characters
+      const emailRegex = /\S+@\S+\.\S+/; // Simple email regex
 
       // Validate username
       if (!validateField(document.getElementById('username'), usernameRegex, "Username is invalid")) {
@@ -45,6 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Validate password
       if (!validateField(document.getElementById('password'), passwordRegex, "Password is invalid")) {
+          isValid = false;
+      }
+
+      // Email validation
+      if (!validateField(document.getElementById('email'), emailRegex, "Email is invalid")) {
           isValid = false;
       }
 

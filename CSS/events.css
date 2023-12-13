@@ -15,7 +15,7 @@ body {
 }
 
 .content {
-  flex: 1; //* Allow the content to grow and fill the available space */
+  flex: 1; /* Allow the content to grow and fill the available space */
 }
 
 .content main {
@@ -56,6 +56,15 @@ header h1 {
 #calendar th {
   background-color: #f7f7f7; /* Light grey background */
   color: #004d00; /* Dark green text */
+}
+
+/* Quantity Adjustment Buttons */
+#calendar a {
+  padding: 5px 10px;
+  background-color: #004d00; /* Dark green */
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
 }
 
 #calendar tr:nth-child(even) {

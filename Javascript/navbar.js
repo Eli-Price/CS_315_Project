@@ -34,7 +34,7 @@ function generateNavbar() {
     //User is logged in, add the logout and Shopping Cart links
     var cartItem = document.createElement('li');
     var cartLink = document.createElement('a');
-    cartLink.href = '../Pages/cart.php';
+    cartLink.href = '../Pages/shopping-cart.php';
     cartLink.textContent = 'Cart';
     cartItem.appendChild(cartLink);
     navList.appendChild(cartItem);
