@@ -85,12 +85,10 @@ try {
     exit;
 }
 // Redirect back to the shopping cart
-if (isset($_GET['source'])) {
-    header("Location: ../Pages/" . $source . ".php");
-    exit;
-}
-else {
+if (isset($_GET['source']) && $_GET['source'] === 'events') {
+    header("Location: ../Pages/events.php");
+} else {
     header("Location: ../Pages/shopping-cart.php");
-    exit;
 }
+exit;
 ?>

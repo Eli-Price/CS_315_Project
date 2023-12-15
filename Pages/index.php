@@ -27,7 +27,7 @@ $errors = $_SESSION['errors'] ?? [];
 
     <div class="content">
         <header class="container">
-            <h1>Welcome to the Local Art Gallery</h1>
+            <h1>Welcome to Artistic Expressions Gallery</h1>
         </header>
 
         <!-- Welcome Section -->

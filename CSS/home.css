@@ -54,30 +54,17 @@ section h2 {
 section p {
   font-size: 1rem;
   margin-bottom: 1rem;
+  margin-left: 1rem;
 }
 
-/* Welcome Section */
-.welcome-section {
-  background: #f7f7f7; /* Light grey background */
-  padding: 2rem;
-}
-
-/* About Section */
-.about-section {
-  background: #eaeaea; /* Slightly darker grey background */
-  padding: 2rem;
-}
-
-/* Exhibitions Section */
-.exhibitions-section {
-  background: #d2b48c; /* Tan background */
-  padding: 2rem;
-}
-
-/* Membership Section */
-.membership-section {
-  background: #f7f7f7; /* Light grey background */
-  padding: 2rem;
+section h2 {
+  background-color: #004d00; /* Dark green background */
+  color: #f7f7f7;
+  padding: 10px 15px;
+  border-radius: 8px; /* Rounded corners */
+  margin: 20px 0; /* Add some margin for spacing */
+  font-weight: 700; /* Make headers bold */
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1); /* Subtle text shadow for headers */
 }
 
 footer {

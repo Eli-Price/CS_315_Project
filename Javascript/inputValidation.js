@@ -40,12 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const emailRegex = /\S+@\S+\.\S+/; // Simple email regex
 
       // Validate username
-      if (!validateField(document.getElementById('username'), usernameRegex, "Username is invalid")) {
+      if (!validateField(document.getElementById('username'), usernameRegex, "Invalid, must be at least 5 letters")) {
           isValid = false;
       }
 
       // Validate password
-      if (!validateField(document.getElementById('password'), passwordRegex, "Password is invalid")) {
+      if (!validateField(document.getElementById('password'), passwordRegex, "Invalid, must be at least 6 characters")) {
           isValid = false;
       }
 

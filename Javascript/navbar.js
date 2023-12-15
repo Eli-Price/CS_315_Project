@@ -14,9 +14,8 @@ function generateNavbar() {
     { href: '../Pages/artists.php', text: 'Artists' },
     { href: '../Pages/events.php', text: 'Events' },
     { href: '../Pages/visitor-info.php', text: 'Visitor Info' },
-    { href: '../Pages/community-art.php', text: 'Community' },
-    { href: '../Pages/art-submission.php', text: 'Art Submission' },
     { href: '../Pages/about-us.php', text: 'About Us' },
+    { href: '../Pages/community-art.php', text: 'Community' },
   ];
 
   // Generate the list items and links

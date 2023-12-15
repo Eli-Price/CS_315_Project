@@ -1,0 +1,78 @@
+html, body {
+  height: 100%; /* Ensure the html and body elements take up the full height of the viewport */
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  display: flex; /* Use flexbox to create a column container */
+  flex-direction: column; /* Stack children elements vertically */
+  min-height: 100vh; /* Use viewport height to ensure minimum height */
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+.content {
+  flex: 1; /* Allow the content to grow and fill the available space */
+}
+
+.content main {
+  padding: 20px;
+}
+
+.content h2, .content h3 {
+  background-color: #004d00; /* Dark green background */
+  color: #f7f7f7;
+  padding: 10px 15px;
+  border-radius: 8px; /* Rounded corners */
+  margin: 20px 0; /* Add some margin for spacing */
+}
+
+main p {
+  margin-left: 1rem;
+}
+
+/* Header Styles */
+header {
+  background-color: #b89569; /* Tan background */
+  color: #004d00; /* Dark green text */
+  padding: 15px;
+  text-align: center;
+  margin: 0;
+}
+
+header h1 {
+  margin: 0;
+}
+
+main h2, h3 {
+  color: #004d00;
+}
+
+/* Footer Styles */
+footer {
+  background-color: #004d00; /* Dark green background */
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .content {
+      padding: 10px;
+  }
+
+  header, footer {
+      padding: 8px 0;
+  }
+
+  .content h2, .content h3 {
+    padding: 8px 10px; /* Slightly smaller padding on smaller screens */
+  }
+}

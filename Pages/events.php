@@ -17,10 +17,11 @@ if (isset($_SESSION['user_id'])) {
     FROM tickets t
     LEFT JOIN user_tickets utc ON t.ticket_id = utc.ticket_id AND utc.user_id = ? AND utc.status = 'in_cart'
     LEFT JOIN user_tickets utp ON t.ticket_id = utp.ticket_id AND utp.user_id = ? AND utp.status = 'purchased'
+    WHERE utc.user_id = ? OR utp.user_id = ? OR (utc.user_id IS NULL AND utp.user_id IS NULL)
     ORDER BY t.event_date ASC
     ");
 
-    $stmt->execute([$user_id, $user_id]);
+    $stmt->execute([$user_id, $user_id, $user_id, $user_id]);
     $events = $stmt->fetchAll();
 } else {
     // Fetch events
@@ -92,12 +93,12 @@ if (isset($_SESSION['user_id'])) {
                                         <td><?php echo htmlspecialchars($event['purchased_quantity']); ?></td>
                                         <td>
                                             <?php if ($event['available_quantity'] > 0): ?>
-                                                <a href="../PHP/add_to_cart.php?action=subtract&ticket_id=<?php echo $event['ticket_id']; ?>&source=events" class="button">Add to Cart</a>
+                                                <a href="../PHP/add_to_cart.php?action=subtract&ticket_id=<?php echo $event['ticket_id']; ?> &source=events" class="button">Add to Cart</a>
                                             <?php endif; ?>
 
                                             <?php if ($event['cart_quantity'] > 0): ?>
-                                                <a href="../PHP/update_cart.php?action=subtract&id=<?php echo $event['cart_user_ticket_id']; ?>&source=events">-</a>
-                                                <a href="../PHP/update_cart.php?action=add&id=<?php echo $event['cart_user_ticket_id']; ?>&source=events">+</a>
+                                                <a href="../PHP/update_cart.php?action=subtract&id=<?php echo $event['cart_user_ticket_id']; ?> &source=events" class="button">-</a>
+                                                <a href="../PHP/update_cart.php?action=add&id=<?php echo $event['cart_user_ticket_id']; ?> &source=events" class="button">+</a>
                                             <?php endif; ?>
                                         </td>
                                     </tr>

@@ -65,6 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Redirect back to the form with errors
-header("Location: login.php");
+header("Location: ../Pages/login.php");
 exit;
 ?>
