@@ -11,7 +11,19 @@ if (!isset($_SESSION['user_id'])) {
 if (isset($_GET['ticket_id'])) {
     $userId = $_SESSION['user_id'];
     $ticketId = $_GET['ticket_id'];
-    // $status = $_GET['status'];
+
+    // First, get the current available quantity
+    $stmt = $pdo->prepare("SELECT available_quantity FROM tickets WHERE ticket_id = ?");
+    $stmt->execute([$ticketId]);
+    $row = $stmt->fetch();
+    $current_quantity = $row['available_quantity'];
+
+    // Then, decrease the quantity by 1
+    $new_quantity = $current_quantity - 1;
+
+    // Finally, update the quantity in the database
+    $stmt = $pdo->prepare("UPDATE tickets SET available_quantity = ? WHERE ticket_id = ?");
+    $stmt->execute([$new_quantity, $ticketId]);
 
     // Check if the user already has any tickets to the event
     $stmt = $pdo->prepare("SELECT * FROM user_tickets WHERE user_id = ? AND ticket_id = ? AND status = 'in_cart'");

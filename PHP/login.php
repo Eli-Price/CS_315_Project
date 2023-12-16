@@ -21,11 +21,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   // Validation
   if (!preg_match("/^[a-zA-Z0-9_]{5,}$/", $username)) {
-      $errors['username'] = "Invalid username";
+      $errors['username'] = "Invalid, must be at least 5 letters";
   }
 
   if (!preg_match("/^(?=.*\d)(?=.*[a-zA-Z]).{6,}$/", $password)) {
-      $errors['password'] = "Invalid password";
+      $errors['password'] = "Invalid, must be at least 6 characters";
   }
 
   // If there are no errors, proceed with login

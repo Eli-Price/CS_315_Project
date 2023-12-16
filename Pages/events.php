@@ -65,7 +65,7 @@ if (isset($_SESSION['user_id'])) {
 
         <main>
             <section id="calendar-section">
-                <h2>Upcoming Events</h2>
+                <h2>Upcoming Events - Tickets</h2>
                 <div id="calendar">
                     <table>
                         <thead>
