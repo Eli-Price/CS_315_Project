@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
       } else {
         // Authentication failed
+        $errors['password'] = "Username or password is incorrect";
         header("Location: ../Pages/login.php");
         echo "Invalid username or password.";
       }
